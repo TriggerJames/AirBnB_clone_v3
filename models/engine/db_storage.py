@@ -109,6 +109,6 @@ occurrence = 0
 if cls:  # If a specific class is specified
     if cls in classes.keys() or cls in classes.values():
         occurrence = len(self.all(cls))
-        else:
+        if not cls:
             occurrence = len(self.all())  # Count instances of all classes
     return occurrence  # Return the total count
