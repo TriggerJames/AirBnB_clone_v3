@@ -8,7 +8,7 @@ from models import storage
 from models.state import State
 
 
-@app_views.route('/status', methods=['GET'], strict_slashes=False)
+@app_views.route('/states', methods=['GET'], strict_slashes=False)
 def toGet():
 
     """ This endpoint returns a list of all State objects in JSON format """

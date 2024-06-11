@@ -3,8 +3,8 @@
 """ This module initializes and runs a Flask web server"""
 
 from flask import Flask, jsonify
+from models.state import State
 from models import storage
-from os import getenv
 from api.v1.views import app_views
 
 # Initialize Flask application
