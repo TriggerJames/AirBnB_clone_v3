@@ -75,40 +75,26 @@ class DBStorage:
         """call remove() method on the private session attribute"""
         self.__session.remove()
 
-
-def get(self, cls, id):
-
-    """ Retrieves an object of a specified class by it's ID.
-
-    Returns:
-        Object: The object of the specified class
-        with the matching ID, or None if not found.
-    """
-
-
-if id and isinstance(id, str):
-
-    if cls and (cls in classes.keys() or cls in classes.values()):
-        all_objs = self.all(cls)
-        for key, value in all_objs.items():
-            if id == value.id and key.split('.')[1] == id:
-                return value
+    def get(self, cls, id):
+        """
+        Retrieves object of a class or all objects of that class
+        """
+        if id and isinstance(id, str):
+            if cls and (cls in classes.keys() or cls in classes.values()):
+                all_objs = self.all(cls)
+                for key, value in all_objs.items():
+                    if id == value.id and key.split('.')[1] == id:
+                        return value
         return
 
-
-def count(self, cls=None):
-
-    """Counts number of instances of specified class
-
-    Returns:
-        int: The number of instances of the specified class
-    """
-
-
-occurrence = 0
-if cls:  # If a specific class is specified
-    if cls in classes.keys() or cls in classes.values():
-        occurrence = len(self.all(cls))
+    def count(self, cls=None):
+        """
+        Returns the occurrence of a class or all classes
+        """
+        occurrence = 0
+        if cls:
+            if cls in classes.keys() or cls in classes.values():
+                occurrence = len(self.all(cls))
         if not cls:
-            occurrence = len(self.all())  # Count instances of all classes
-    return occurrence  # Return the total count
+            occurrence = len(self.all())
+        return occurrence
