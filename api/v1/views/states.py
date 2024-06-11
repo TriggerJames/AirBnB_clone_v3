@@ -12,7 +12,7 @@ from models.state import State
 def toGet():
 
     """ This endpoint returns a list of all State objects in JSON format """
-    
+
     objects = storage.all('State')
     lista = []
     for state in objects.values():
@@ -20,11 +20,12 @@ def toGet():
     return jsonify(lista)
 
 
-@app_views.route('/states/<string:state_id>', methods=['GET'], strict_slashes=False)
+@app_views.route('/states/<string:state_id>', methods=['GET'],
+                 strict_slashes=False)
 def toGetid(state_id):
 
     """ Retrieve a State object by ID """
-    
+
     objects = storage.get('State', state_id)
     if objects is None:
         abort(404)
@@ -51,7 +52,7 @@ def posting():
 def putinV(state_id):
 
     """ Update a State object"""
-    
+
     response = request.get_json()
     if response is None:
         abort(400, description='Not a JSON')
@@ -66,7 +67,8 @@ def putinV(state_id):
     return jsonify(stateObject.to_dict()), 200
 
 
-@app_views.route('/states/<state_id>', methods=['DELETE'], strict_slashes=False)
+@app_views.route('/states/<state_id>', methods=['DELETE'],
+                 strict_slashes=False)
 def deleting(state_id):
 
     """ Delete a State object """
